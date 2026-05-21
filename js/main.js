@@ -242,4 +242,67 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
+  // ── Gold Scroll Particles ──
+  const canvas = document.getElementById('goldCanvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let w, h, scrollY = 0, particles = [];
+
+    const resize = () => {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+    window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
+
+    const totalHeight = () => document.body.scrollHeight;
+
+    class Particle {
+      constructor() { this.reset(true); }
+      reset(initial) {
+        this.x = Math.random() * w;
+        this.baseY = initial ? Math.random() * h : -Math.random() * 60 - 10;
+        this.size = Math.random() * 2.5 + 0.8;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.drift = Math.random() * 0.4 + 0.1;
+        this.opacity = Math.random() * 0.35 + 0.08;
+        this.pulseSpeed = Math.random() * 0.02 + 0.005;
+        this.pulseOffset = Math.random() * Math.PI * 2;
+        this.glowSize = this.size > 2 ? this.size * 3 : 0;
+      }
+      update(time) {
+        const scrollFactor = scrollY / (totalHeight() - h || 1);
+        this.baseY += this.drift + scrollFactor * 1.5;
+        this.x += this.speedX + Math.sin(time * 0.001 + this.pulseOffset) * 0.15;
+        if (this.baseY > h + 20 || this.x < -20 || this.x > w + 20) this.reset(false);
+        this.currentOpacity = this.opacity * (0.6 + 0.4 * Math.sin(time * this.pulseSpeed + this.pulseOffset));
+      }
+      draw() {
+        if (this.glowSize > 0) {
+          const grad = ctx.createRadialGradient(this.x, this.baseY, 0, this.x, this.baseY, this.glowSize);
+          grad.addColorStop(0, `rgba(201, 169, 110, ${this.currentOpacity * 0.5})`);
+          grad.addColorStop(1, 'rgba(201, 169, 110, 0)');
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.arc(this.x, this.baseY, this.glowSize, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.fillStyle = `rgba(212, 185, 135, ${this.currentOpacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.baseY, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 35; i++) particles.push(new Particle());
+
+    const animate = (time) => {
+      ctx.clearRect(0, 0, w, h);
+      particles.forEach(p => { p.update(time); p.draw(); });
+      requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  }
+
 });
