@@ -231,15 +231,65 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Parallax on hero video ──
+  // ── Parallax on hero video + about images ──
   const heroVideo = document.querySelector('.hero-video');
-  if (heroVideo) {
-    window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
-      if (scrolled < window.innerHeight) {
-        heroVideo.style.transform = `scale(1.05) translateY(${scrolled * 0.15}px)`;
+  const aboutMain = document.querySelector('.about-img--main');
+  const aboutAccent = document.querySelector('.about-img--accent');
+
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+
+    if (heroVideo && scrolled < window.innerHeight) {
+      heroVideo.style.transform = `scale(1.05) translateY(${scrolled * 0.15}px)`;
+    }
+
+    if (aboutMain && aboutAccent) {
+      const aboutSection = document.getElementById('about');
+      if (aboutSection) {
+        const rect = aboutSection.getBoundingClientRect();
+        const progress = -rect.top / (rect.height + window.innerHeight);
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          aboutMain.style.transform = `translateY(${progress * -30}px)`;
+          aboutAccent.style.transform = `translateY(${progress * -55}px)`;
+        }
       }
-    }, { passive: true });
+    }
+  }, { passive: true });
+
+  // ── Gold Section Line Traces ──
+  const sectionLines = document.querySelectorAll('.section-line');
+  const lineObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('line-visible');
+        lineObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  sectionLines.forEach(el => lineObserver.observe(el));
+
+  // ── Cursor Glow Trail ──
+  const cursorGlow = document.getElementById('cursorGlow');
+  if (cursorGlow && window.matchMedia('(hover: hover)').matches) {
+    let mouseX = -500, mouseY = -500, glowX = -500, glowY = -500;
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorGlow.style.opacity = '1';
+    });
+    document.addEventListener('mouseleave', () => {
+      cursorGlow.style.opacity = '0';
+    });
+    const lerp = (a, b, t) => a + (b - a) * t;
+    const updateGlow = () => {
+      glowX = lerp(glowX, mouseX, 0.08);
+      glowY = lerp(glowY, mouseY, 0.08);
+      cursorGlow.style.left = glowX + 'px';
+      cursorGlow.style.top = glowY + 'px';
+      requestAnimationFrame(updateGlow);
+    };
+    cursorGlow.style.opacity = '0';
+    requestAnimationFrame(updateGlow);
   }
 
   // ── Gold Scroll Particles ──
