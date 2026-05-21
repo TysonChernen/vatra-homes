@@ -1,0 +1,9 @@
+# Original unoptimized assets (too large for GitHub Pages)
+project photos/
+site/
+.DS_Store
+.claude/
+
+# Large original videos not used by the website
+media/circling-construction.mp4
+media/truck-reversing.mp4
