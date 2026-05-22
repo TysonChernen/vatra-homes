@@ -131,26 +131,74 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Portfolio Lightbox ──
+  // ── Portfolio Lightbox & Multi-Photo Gallery ──
   const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
   const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxContent = lightbox.querySelector('.lightbox-content');
 
+  // Handle Portfolio Item Click
   portfolioItems.forEach(item => {
     item.addEventListener('click', () => {
-      const img = item.querySelector('img');
-      if (img) {
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
+      const galleryData = JSON.parse(item.dataset.gallery || '[]');
+      if (galleryData.length === 0) return;
+
+      // Create Lightbox Structure
+      lightboxContent.innerHTML = `
+        <div class="lightbox-track" id="lightboxTrack">
+          ${galleryData.map(src => `
+            <div class="lightbox-slide">
+              <img src="${src}" alt="Project Photo">
+            </div>
+          `).join('')}
+        </div>
+        <div class="lightbox-nav">
+          <button class="lightbox-btn" id="lboxPrev" aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="lightbox-btn" id="lboxNext" aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      `;
+
+      const track = document.getElementById('lightboxTrack');
+      const prev = document.getElementById('lboxPrev');
+      const next = document.getElementById('lboxNext');
+
+      if (prev && next && track) {
+        prev.addEventListener('click', (e) => {
+          e.stopPropagation();
+          track.scrollBy({ left: -track.offsetWidth, behavior: 'smooth' });
+        });
+        next.addEventListener('click', (e) => {
+          e.stopPropagation();
+          track.scrollBy({ left: track.offsetWidth, behavior: 'smooth' });
+        });
       }
+
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
     });
+  });
+
+  // Thumbnail Slideshow Animation
+  const thumbGalleries = document.querySelectorAll('.portfolio-thumb-gallery');
+  thumbGalleries.forEach(gallery => {
+    const images = gallery.querySelectorAll('.portfolio-thumb-img');
+    if (images.length <= 1) return;
+
+    let currentThumb = 0;
+    setInterval(() => {
+      images[currentThumb].classList.remove('active');
+      currentThumb = (currentThumb + 1) % images.length;
+      images[currentThumb].classList.add('active');
+    }, 3000 + Math.random() * 2000); // Randomized timing for more natural feel
   });
 
   const closeLightbox = () => {
     lightbox.classList.remove('active');
     document.body.style.overflow = '';
+    setTimeout(() => { lightboxContent.innerHTML = ''; }, 400);
   };
   if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
   if (lightbox) lightbox.addEventListener('click', (e) => {
