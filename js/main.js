@@ -355,4 +355,25 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(animate);
   }
 
+  // ── Scroll Drawing Animation ──
+  const scrollPath = document.getElementById('scroll-path');
+  if (scrollPath) {
+    const pathLength = scrollPath.getTotalLength();
+    
+    scrollPath.style.strokeDasharray = pathLength;
+    scrollPath.style.strokeDashoffset = pathLength;
+
+    const updateScrollPath = () => {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPos = window.scrollY;
+      const scrollPercentage = Math.min(Math.max(scrollPos / scrollHeight, 0), 1);
+
+      const drawLength = pathLength * scrollPercentage;
+      scrollPath.style.strokeDashoffset = pathLength - drawLength;
+    };
+
+    window.addEventListener('scroll', updateScrollPath, { passive: true });
+    updateScrollPath();
+  }
+
 });

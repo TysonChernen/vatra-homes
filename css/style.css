@@ -543,7 +543,7 @@ input, textarea, select { font-family: var(--font-body); }
   overflow: hidden;
   cursor: pointer;
 }
-.portfolio-item--wide { grid-column: span 2; }
+.portfolio-item--wide { grid-column: span 2; aspect-ratio: 8/3; }
 .portfolio-img {
   width: 100%; height: 100%;
 }
@@ -869,6 +869,43 @@ input, textarea, select { font-family: var(--font-body); }
 }
 
 /* ============================================
+   SCROLL DRAWING
+   ============================================ */
+.scroll-drawing-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100; /* Move to top so it's never hidden by backgrounds */
+  pointer-events: none;
+  opacity: 0.3;
+}
+.scroll-drawing-wrap svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+#scroll-path {
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  mix-blend-mode: screen; /* Helps it feel integrated with the dark theme */
+}
+
+/* Ensure content stays above the line */
+.hero, .section, .marquee-section, .footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* Base body needs relative for the absolute wrapper */
+body {
+  position: relative;
+}
+
+/* ============================================
    REVEAL ANIMATIONS
    ============================================ */
 .reveal {
@@ -890,7 +927,7 @@ input, textarea, select { font-family: var(--font-body); }
 @media (max-width: 1024px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-  .portfolio-item--wide { grid-column: span 2; }
+  .portfolio-item--wide { grid-column: span 2; aspect-ratio: 4/3; }
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
   .about-images { height: 400px; }
   .about-stats { grid-template-columns: repeat(2, 1fr); }
