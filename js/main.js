@@ -64,89 +64,50 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.5 });
   statNumbers.forEach(el => counterObserver.observe(el));
 
-  // ── Featured Gallery (Drag Scroll) ──
+  // ── Featured Gallery (Native Scroll + Snap) ──
   const track = document.getElementById('featuredTrack');
   const prevBtn = document.getElementById('featuredPrev');
   const nextBtn = document.getElementById('featuredNext');
   const currentEl = document.getElementById('featuredCurrent');
-  let featuredIndex = 0;
 
   if (track) {
     const slides = track.querySelectorAll('.featured-slide');
-    const totalSlides = slides.length;
 
-    const getSlideWidth = () => {
+    const getScrollStep = () => {
       const slide = slides[0];
       if (!slide) return 350;
-      return slide.offsetWidth + 24;
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      return slide.offsetWidth + gap;
     };
 
-    const updateFeatured = () => {
-      const slideWidth = getSlideWidth();
-      track.style.transform = `translateX(-${featuredIndex * slideWidth}px)`;
-      if (currentEl) currentEl.textContent = featuredIndex + 1;
+    // Update counter using IntersectionObserver for accuracy with snap points
+    const observerOptions = {
+      root: track,
+      threshold: 0.6
     };
 
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = Array.from(slides).indexOf(entry.target);
+          if (currentEl) currentEl.textContent = index + 1;
+        }
+      });
+    }, observerOptions);
+
+    slides.forEach(slide => counterObserver.observe(slide));
+
+    // Arrow buttons
     if (nextBtn) {
       nextBtn.addEventListener('click', () => {
-        featuredIndex = (featuredIndex + 1) % totalSlides;
-        updateFeatured();
+        track.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
       });
     }
     if (prevBtn) {
       prevBtn.addEventListener('click', () => {
-        featuredIndex = (featuredIndex - 1 + totalSlides) % totalSlides;
-        updateFeatured();
+        track.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
       });
     }
-
-    // Touch/drag support
-    let isDragging = false;
-    let startX = 0;
-    let scrollStart = 0;
-
-    track.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      startX = e.clientX;
-      scrollStart = featuredIndex * getSlideWidth();
-      track.style.transition = 'none';
-    });
-    document.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      const dx = e.clientX - startX;
-      track.style.transform = `translateX(-${scrollStart - dx}px)`;
-    });
-    document.addEventListener('mouseup', (e) => {
-      if (!isDragging) return;
-      isDragging = false;
-      track.style.transition = '';
-      const dx = e.clientX - startX;
-      if (Math.abs(dx) > 80) {
-        if (dx < 0 && featuredIndex < slides.length - 1) featuredIndex++;
-        else if (dx > 0 && featuredIndex > 0) featuredIndex--;
-      }
-      updateFeatured();
-    });
-
-    // Touch events
-    track.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
-      scrollStart = featuredIndex * getSlideWidth();
-      track.style.transition = 'none';
-    }, { passive: true });
-    track.addEventListener('touchmove', (e) => {
-      const dx = e.touches[0].clientX - startX;
-      track.style.transform = `translateX(-${scrollStart - dx}px)`;
-    }, { passive: true });
-    track.addEventListener('touchend', (e) => {
-      track.style.transition = '';
-      const dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 50) {
-        if (dx < 0 && featuredIndex < slides.length - 1) featuredIndex++;
-        else if (dx > 0 && featuredIndex > 0) featuredIndex--;
-      }
-      updateFeatured();
-    });
   }
 
   // ── Portfolio Filters ──
