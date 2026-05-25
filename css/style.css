@@ -636,21 +636,28 @@ input, textarea, select { font-family: var(--font-body); }
   color: rgba(255,255,255,0.6);
   font-weight: 300;
 }
-.portfolio-link {
-  display: inline-block;
-  margin-top: 1.2rem;
-  font-size: 0.75rem;
+.lightbox-agent-link {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   color: var(--accent);
   text-decoration: none;
-  border-bottom: 1px solid rgba(201,169,110,0.3);
-  padding-bottom: 2px;
+  border: 1px solid rgba(201,169,110,0.3);
+  padding: 0.8rem 1.5rem;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  z-index: 15;
+  white-space: nowrap;
 }
-.portfolio-link:hover {
-  color: white;
-  border-bottom-color: white;
+.lightbox-agent-link:hover {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
 }
 
 .portfolio-item.hidden {

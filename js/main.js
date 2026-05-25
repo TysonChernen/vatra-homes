@@ -140,6 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
   portfolioItems.forEach(item => {
     item.addEventListener('click', () => {
       const galleryData = JSON.parse(item.dataset.gallery || '[]');
+      const agentLink = item.dataset.agentLink;
       if (galleryData.length === 0) return;
 
       // Create Lightbox Structure
@@ -159,6 +160,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
           </button>
         </div>
+        ${agentLink ? `
+          <a href="${agentLink}" target="_blank" rel="noopener noreferrer" class="lightbox-agent-link">
+            View listing agent on realtor.ca
+          </a>
+        ` : ''}
       `;
 
       const track = document.getElementById('lightboxTrack');
