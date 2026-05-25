@@ -181,19 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Thumbnail Slideshow Animation
-  const thumbGalleries = document.querySelectorAll('.portfolio-thumb-gallery');
-  thumbGalleries.forEach(gallery => {
-    const images = gallery.querySelectorAll('.portfolio-thumb-img');
-    if (images.length <= 1) return;
-
-    let currentThumb = 0;
-    setInterval(() => {
-      images[currentThumb].classList.remove('active');
-      currentThumb = (currentThumb + 1) % images.length;
-      images[currentThumb].classList.add('active');
-    }, 3000 + Math.random() * 2000); // Randomized timing for more natural feel
-  });
 
   const closeLightbox = () => {
     lightbox.classList.remove('active');
@@ -202,7 +189,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
   if (lightbox) lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
+    if (e.target.closest('.lightbox-btn')) return;
+    if (e.target.tagName === 'IMG') return;
+    closeLightbox();
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeLightbox();
