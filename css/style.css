@@ -636,6 +636,22 @@ input, textarea, select { font-family: var(--font-body); }
   color: rgba(255,255,255,0.6);
   font-weight: 300;
 }
+.portfolio-link {
+  display: inline-block;
+  margin-top: 1.2rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201,169,110,0.3);
+  padding-bottom: 2px;
+  transition: all 0.3s ease;
+}
+.portfolio-link:hover {
+  color: white;
+  border-bottom-color: white;
+}
 
 .portfolio-item.hidden {
   display: none;
