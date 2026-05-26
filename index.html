@@ -41,7 +41,25 @@
       "name": "British Columbia"
     },
     "knowsAbout": ["Custom Home Building", "Townhome Development", "Commercial Construction", "Multi-Unit Residential"],
-    "foundingDate": "2015"
+    "foundingDate": "2015",
+    "video": [
+      {
+        "@type": "VideoObject",
+        "name": "Vatra Homes — Premium Development Showcase",
+        "description": "Aerial drone footage showcasing Vatra Homes residential and commercial development projects across British Columbia.",
+        "thumbnailUrl": "https://vatrahomes.ca/portfolio/cadboro-bay/wood-stone-facade-front.jpg",
+        "contentUrl": "https://vatrahomes.ca/media/hero-video.mp4",
+        "uploadDate": "2025-01-01"
+      },
+      {
+        "@type": "VideoObject",
+        "name": "Vatra Homes — Construction Project Flyover",
+        "description": "Drone footage circling an active Vatra Homes construction site in British Columbia.",
+        "thumbnailUrl": "https://vatrahomes.ca/portfolio/cadboro-bay/garage-level-exterior.jpg",
+        "contentUrl": "https://vatrahomes.ca/media/circling-bg.mp4",
+        "uploadDate": "2025-01-01"
+      }
+    ]
   }
   </script>
 </head>
@@ -82,7 +100,7 @@
   <!-- Hero -->
   <section class="hero" id="hero">
     <div class="hero-video-wrap">
-      <video class="hero-video" autoplay muted loop playsinline>
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="media/hero-poster.jpg" aria-label="Aerial footage of Vatra Homes development projects in British Columbia">
         <source src="media/hero-video.mp4" type="video/mp4">
       </video>
     </div>
@@ -479,7 +497,7 @@
   <!-- CTA Banner -->
   <section class="cta-banner">
     <div class="cta-bg">
-      <video autoplay muted loop playsinline>
+      <video autoplay muted loop playsinline preload="metadata" poster="media/cta-poster.jpg" aria-label="Drone footage circling a Vatra Homes construction project">
         <source src="media/circling-bg.mp4" type="video/mp4">
       </video>
     </div>
