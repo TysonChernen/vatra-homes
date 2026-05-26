@@ -1,16 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
+      xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
 <url>
   <loc>https://vatrahomes.ca/</loc>
-  <lastmod>2026-05-25T23:56:55+00:00</lastmod>
+  <lastmod>2026-05-25</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>1.0</priority>
+  <image:image>
+    <image:loc>https://vatrahomes.ca/portfolio/cadboro-bay/wood-stone-facade-front.jpg</image:loc>
+    <image:title>Cadboro Bay Contemporary Townhomes — Victoria, BC</image:title>
+  </image:image>
+  <image:image>
+    <image:loc>https://vatrahomes.ca/portfolio/cadboro-bay/living-room-fireplace.jpg</image:loc>
+    <image:title>Cadboro Bay Living Room with Fireplace</image:title>
+  </image:image>
+  <image:image>
+    <image:loc>https://vatrahomes.ca/portfolio/knotty-pine/townhome-row-street-view.jpg</image:loc>
+    <image:title>Knotty Pine Residences — Victoria, BC</image:title>
+  </image:image>
+  <image:image>
+    <image:loc>https://vatrahomes.ca/portfolio/single-homes/white-modern-farmhouse.jpg</image:loc>
+    <image:title>Custom Modern Farmhouse by Vatra Homes</image:title>
+  </image:image>
+  <image:image>
+    <image:loc>https://vatrahomes.ca/portfolio/apt-379/four-seasons-suites-facade.jpg</image:loc>
+    <image:title>379 Four Seasons Suites Apartment Complex</image:title>
+  </image:image>
+  <image:image>
+    <image:loc>https://vatrahomes.ca/portfolio/imperia/building-centre-complex.jpg</image:loc>
+    <image:title>Imperia Building Centre Commercial Complex</image:title>
+  </image:image>
+  <image:image>
+    <image:loc>https://vatrahomes.ca/portfolio/market-6/fuel-market-night.jpg</image:loc>
+    <image:title>Market 6 Commercial Retail</image:title>
+  </image:image>
+  <image:image>
+    <image:loc>https://vatrahomes.ca/portfolio/single-homes/craftsman-bungalow-dusk.jpg</image:loc>
+    <image:title>Prairie Craftsman Custom Home at Dusk</image:title>
+  </image:image>
+  <image:image>
+    <image:loc>https://vatrahomes.ca/media/showcase-1.jpeg</image:loc>
+    <image:title>Vatra Homes Modern Townhome Exterior</image:title>
+  </image:image>
 </url>
-
 
 </urlset>
