@@ -8,8 +8,8 @@
   --bg-card-hover: rgba(255,255,255,0.06);
   --text: #f0f0f0;
   --text-muted: #888;
-  --accent: #c9a96e;
-  --accent-dark: #a8873f;
+  --accent: #CCDDFF;
+  --accent-dark: #99BBEE;
   --border: rgba(255,255,255,0.08);
   --border-hover: rgba(255,255,255,0.15);
   --font-heading: 'Cormorant Garamond', Georgia, serif;
@@ -45,7 +45,7 @@
   width: 350px;
   height: 350px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,169,110,0.07) 0%, rgba(201,169,110,0) 70%);
+  background: radial-gradient(circle, rgba(204,221,255,0.07) 0%, rgba(204,221,255,0) 70%);
   pointer-events: none;
   z-index: 2;
   transform: translate(-50%, -50%);
@@ -127,7 +127,7 @@ input, textarea, select { font-family: var(--font-body); }
   background: var(--accent);
   color: #0a0a0a;
 }
-.btn--primary:hover { background: #dbb978; }
+.btn--primary:hover { background: #ddeeff; }
 .btn--outline {
   border: 1px solid rgba(255,255,255,0.25);
   color: var(--text);
@@ -255,7 +255,7 @@ input, textarea, select { font-family: var(--font-body); }
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--accent);
-  border: 1px solid rgba(201,169,110,0.3);
+  border: 1px solid rgba(204,221,255,0.3);
   padding: 0.5rem 1.5rem;
   margin-bottom: 2.5rem;
 }
@@ -646,7 +646,7 @@ input, textarea, select { font-family: var(--font-body); }
   letter-spacing: 0.15em;
   color: var(--accent);
   text-decoration: none;
-  border: 1px solid rgba(201,169,110,0.3);
+  border: 1px solid rgba(204,221,255,0.3);
   padding: 0.8rem 1.5rem;
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(10px);
@@ -1050,6 +1050,21 @@ body {
 .reveal:nth-child(2) { transition-delay: 0.1s; }
 .reveal:nth-child(3) { transition-delay: 0.2s; }
 .reveal:nth-child(4) { transition-delay: 0.3s; }
+
+/* Service cards – stronger staggered entrance */
+.service-card.reveal {
+  opacity: 0;
+  transform: translateY(60px) scale(0.95);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.service-card.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.services-grid .service-card.reveal:nth-child(1) { transition-delay: 0s; }
+.services-grid .service-card.reveal:nth-child(2) { transition-delay: 0.15s; }
+.services-grid .service-card.reveal:nth-child(3) { transition-delay: 0.3s; }
+.services-grid .service-card.reveal:nth-child(4) { transition-delay: 0.45s; }
 
 /* ============================================
    RESPONSIVE

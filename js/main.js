@@ -335,14 +335,14 @@ document.addEventListener('DOMContentLoaded', () => {
       draw() {
         if (this.glowSize > 0) {
           const grad = ctx.createRadialGradient(this.x, this.baseY, 0, this.x, this.baseY, this.glowSize);
-          grad.addColorStop(0, `rgba(201, 169, 110, ${this.currentOpacity * 0.5})`);
-          grad.addColorStop(1, 'rgba(201, 169, 110, 0)');
+          grad.addColorStop(0, `rgba(204, 221, 255, ${this.currentOpacity * 0.5})`);
+          grad.addColorStop(1, 'rgba(204, 221, 255, 0)');
           ctx.fillStyle = grad;
           ctx.beginPath();
           ctx.arc(this.x, this.baseY, this.glowSize, 0, Math.PI * 2);
           ctx.fill();
         }
-        ctx.fillStyle = `rgba(212, 185, 135, ${this.currentOpacity})`;
+        ctx.fillStyle = `rgba(204, 221, 255, ${this.currentOpacity})`;
         ctx.beginPath();
         ctx.arc(this.x, this.baseY, this.size, 0, Math.PI * 2);
         ctx.fill();
