@@ -267,13 +267,13 @@ input, textarea, select { font-family: var(--font-body); }
 }
 .hero-tagline {
   display: block;
-  font-family: var(--font-heading);
-  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
   font-weight: 300;
-  color: var(--accent);
-  margin-top: 1.5rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-top: 1.2rem;
+  letter-spacing: 0.08em;
+  text-transform: none;
 }
 .hero-sub {
   font-family: var(--font-body);
