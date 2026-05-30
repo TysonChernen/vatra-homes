@@ -372,7 +372,29 @@ document.addEventListener('DOMContentLoaded', () => {
       const scrollPos = window.scrollY;
       const scrollPercentage = Math.min(Math.max(scrollPos / scrollHeight, 0), 1);
 
-      const drawLength = pathLength * scrollPercentage;
+      // Find where the contact section starts as a scroll percentage
+      const contactSection = document.getElementById('contact');
+      const processSection = document.getElementById('process');
+      const catchUpStart = processSection
+        ? (processSection.offsetTop + processSection.offsetHeight) / (scrollHeight + window.innerHeight)
+        : 0.85;
+
+      let easedPercentage;
+      if (scrollPercentage < 0.5) {
+        // First half: normal speed
+        easedPercentage = scrollPercentage;
+      } else if (scrollPercentage < catchUpStart) {
+        // Second half until process ends: slower draw
+        easedPercentage = 0.5 + (scrollPercentage - 0.5) * 0.85;
+      } else {
+        // After process section: catch up to strike through the form
+        const slowEnd = 0.5 + (catchUpStart - 0.5) * 0.85;
+        const remaining = 1 - slowEnd;
+        const catchUpProgress = (scrollPercentage - catchUpStart) / (1 - catchUpStart);
+        easedPercentage = slowEnd + remaining * catchUpProgress;
+      }
+
+      const drawLength = pathLength * easedPercentage;
       scrollPath.style.strokeDashoffset = pathLength - drawLength;
     };
 

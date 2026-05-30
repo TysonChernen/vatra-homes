@@ -538,6 +538,40 @@ input, textarea, select { font-family: var(--font-body); }
 .featured-counter span:first-child { color: var(--text); }
 
 /* ============================================
+   CURRENT PROJECT
+   ============================================ */
+.current-project-desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  color: var(--text-muted);
+  max-width: 600px;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+.current-project-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.current-project-video {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+.current-project-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 768px) {
+  .current-project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
    PORTFOLIO
    ============================================ */
 .portfolio-filters {
@@ -1009,7 +1043,7 @@ input, textarea, select { font-family: var(--font-body); }
   height: 100%;
   z-index: 1; /* Sits behind content (z-index 2) but above particles (z-index 0) */
   pointer-events: none;
-  opacity: 0.3;
+  opacity: 0.2;
 }
 .scroll-drawing-wrap svg {
   width: 100%;
@@ -1018,7 +1052,7 @@ input, textarea, select { font-family: var(--font-body); }
 }
 #scroll-path {
   stroke: var(--accent);
-  stroke-width: 1.2;
+  stroke-width: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
   mix-blend-mode: screen; /* Helps it feel integrated with the dark theme */
@@ -1113,19 +1147,41 @@ body {
   .footer-links { grid-template-columns: repeat(3, 1fr); }
   .footer-bottom { flex-direction: column; gap: 1.5rem; text-align: center; }
 
-  .about-images { height: 350px; }
-  .about-stats { grid-template-columns: repeat(2, 1fr); }
+  /* Tighter section padding on mobile */
+  .section { padding: clamp(3rem, 7vw, 5rem) 0; }
 
-  .process-step { grid-template-columns: 1fr; gap: 1rem; }
-  .process-number { font-size: 2.5rem; }
+  /* About – compact */
+  .about-images { height: 300px; }
+  .about-stats { grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; padding-top: 1.5rem; }
+  .stat-number { font-size: 1.8rem; }
+  .stat-prefix, .stat-suffix { font-size: 1.4rem; }
+  .stat-label { font-size: 0.65rem; margin-top: 0.2rem; }
+  .about-desc { margin-bottom: 0.75rem; }
+
+  /* Services – compact cards */
+  .services-grid { margin-top: 1.5rem; gap: 1rem; }
+  .service-card { padding: 1.5rem 1.25rem; }
+  .service-icon { width: 36px; height: 36px; margin-bottom: 1rem; }
+  .service-title { font-size: 1.2rem; margin-bottom: 0.4rem; }
+  .service-desc { font-size: 0.85rem; line-height: 1.6; }
+
+  /* Process – compact steps */
+  .process-timeline { margin-top: 1.5rem; }
+  .process-step { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.5rem 0; }
+  .process-number { font-size: 2rem; min-width: auto; }
+  .process-content h3 { font-size: 1.25rem; margin-bottom: 0.4rem; }
+  .process-content p { font-size: 0.85rem; line-height: 1.6; }
 
   .featured-slide { width: 85vw; }
+
+  /* Current project – stack on mobile */
+  .current-project-grid { grid-template-columns: 1fr; }
 
 }
 
 @media (max-width: 480px) {
   .footer-links { grid-template-columns: 1fr 1fr; }
-  .about-images { height: 280px; }
+  .about-images { height: 250px; }
   .about-img--accent { width: 65%; }
   .portfolio-filters { gap: 0.4rem; }
   .filter-btn { padding: 0.5rem 1rem; font-size: 0.7rem; }
