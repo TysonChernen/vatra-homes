@@ -6,9 +6,11 @@
 
 <url>
   <loc>https://vatrahomes.ca/</loc>
-  <lastmod>2026-05-25</lastmod>
-  <changefreq>monthly</changefreq>
+  <lastmod>2026-05-30</lastmod>
+  <changefreq>weekly</changefreq>
   <priority>1.0</priority>
+
+  <!-- Portfolio Images: Cadboro Bay -->
   <image:image>
     <image:loc>https://vatrahomes.ca/portfolio/cadboro-bay/wood-stone-facade-front.jpg</image:loc>
     <image:title>Cadboro Bay Contemporary Townhomes — Victoria, BC</image:title>
@@ -18,47 +20,75 @@
     <image:title>Cadboro Bay Living Room with Fireplace</image:title>
   </image:image>
   <image:image>
-    <image:loc>https://vatrahomes.ca/portfolio/knotty-pine/townhome-row-street-view.jpg</image:loc>
-    <image:title>Knotty Pine Residences — Victoria, BC</image:title>
+    <image:loc>https://vatrahomes.ca/portfolio/cadboro-bay/interior-1.jpg</image:loc>
+    <image:title>Cadboro Bay Interior Design</image:title>
   </image:image>
+
+  <!-- Portfolio Images: Knotty Pine -->
+  <image:image>
+    <image:loc>https://vatrahomes.ca/portfolio/knotty-pine/listing-1.jpg</image:loc>
+    <image:title>Knotty Pine Residences — Townhome Front Facade, Victoria, BC</image:title>
+  </image:image>
+  <image:image>
+    <image:loc>https://vatrahomes.ca/portfolio/knotty-pine/listing-2.jpg</image:loc>
+    <image:title>Knotty Pine Residences — Corner Exterior View</image:title>
+  </image:image>
+  <image:image>
+    <image:loc>https://vatrahomes.ca/portfolio/knotty-pine/listing-6.jpg</image:loc>
+    <image:title>Knotty Pine Residences — Modern Kitchen Interior</image:title>
+  </image:image>
+
+  <!-- Portfolio Images: Single Homes -->
   <image:image>
     <image:loc>https://vatrahomes.ca/portfolio/single-homes/white-modern-farmhouse.jpg</image:loc>
     <image:title>Custom Modern Farmhouse by Vatra Homes</image:title>
   </image:image>
   <image:image>
+    <image:loc>https://vatrahomes.ca/portfolio/single-homes/craftsman-bungalow-dusk.jpg</image:loc>
+    <image:title>Prairie Craftsman Custom Home at Dusk</image:title>
+  </image:image>
+
+  <!-- Portfolio Images: Apartments & Multi-Unit -->
+  <image:image>
     <image:loc>https://vatrahomes.ca/portfolio/apt-379/four-seasons-suites-facade.jpg</image:loc>
     <image:title>379 Four Seasons Suites Apartment Complex</image:title>
   </image:image>
+  <image:image>
+    <image:loc>https://vatrahomes.ca/portfolio/apartments/grey-apartment-walkway.jpg</image:loc>
+    <image:title>58 Apartment Complex — Multi-Unit Residential</image:title>
+  </image:image>
+
+  <!-- Portfolio Images: Commercial -->
   <image:image>
     <image:loc>https://vatrahomes.ca/portfolio/imperia/building-centre-complex.jpg</image:loc>
     <image:title>Imperia Building Centre Commercial Complex</image:title>
   </image:image>
   <image:image>
     <image:loc>https://vatrahomes.ca/portfolio/market-6/fuel-market-night.jpg</image:loc>
-    <image:title>Market 6 Commercial Retail</image:title>
+    <image:title>Market 6 Commercial Retail at Night</image:title>
   </image:image>
-  <image:image>
-    <image:loc>https://vatrahomes.ca/portfolio/single-homes/craftsman-bungalow-dusk.jpg</image:loc>
-    <image:title>Prairie Craftsman Custom Home at Dusk</image:title>
-  </image:image>
+
+  <!-- Showcase Image -->
   <image:image>
     <image:loc>https://vatrahomes.ca/media/showcase-1.jpeg</image:loc>
     <image:title>Vatra Homes Modern Townhome Exterior</image:title>
   </image:image>
+
+  <!-- Videos -->
   <video:video>
     <video:thumbnail_loc>https://vatrahomes.ca/media/hero-poster.jpg</video:thumbnail_loc>
     <video:title>Vatra Homes — Premium Development Showcase</video:title>
     <video:description>Aerial drone footage showcasing Vatra Homes residential and commercial development projects across British Columbia.</video:description>
     <video:content_loc>https://vatrahomes.ca/media/hero-video.mp4</video:content_loc>
-    <video:publication_date>2025-01-01</video:publication_date>
+    <video:publication_date>2026-05-30</video:publication_date>
     <video:family_friendly>yes</video:family_friendly>
   </video:video>
   <video:video>
     <video:thumbnail_loc>https://vatrahomes.ca/media/cta-poster.jpg</video:thumbnail_loc>
-    <video:title>Vatra Homes — Construction Project Flyover</video:title>
-    <video:description>Drone footage circling an active Vatra Homes construction site in British Columbia.</video:description>
+    <video:title>Knotty Pine Residences — Construction Progress</video:title>
+    <video:description>Drone footage of the Knotty Pine Residences 23-unit townhouse development under construction in Victoria, BC.</video:description>
     <video:content_loc>https://vatrahomes.ca/media/circling-bg.mp4</video:content_loc>
-    <video:publication_date>2025-01-01</video:publication_date>
+    <video:publication_date>2026-05-30</video:publication_date>
     <video:family_friendly>yes</video:family_friendly>
   </video:video>
 </url>
