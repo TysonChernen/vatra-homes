@@ -203,25 +203,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') closeLightbox();
   });
 
-  // ── Contact Form ──
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const btn = contactForm.querySelector('button[type="submit"]');
-      const original = btn.innerHTML;
-      btn.innerHTML = '<span>Message Sent!</span>';
-      btn.style.background = '#2d8a4e';
-      btn.disabled = true;
-      setTimeout(() => {
-        btn.innerHTML = original;
-        btn.style.background = '';
-        btn.disabled = false;
-        contactForm.reset();
-      }, 3000);
-    });
-  }
-
   // ── Smooth Scroll for anchor links ──
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
